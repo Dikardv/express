@@ -3,7 +3,7 @@ const app = x();
 const CORS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,DELETE",
-  "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers",
+  "Access-Control-Allow-Headers": "Content-Type",
 };
 app
   .get("/", (r) => r.res.send("ALL OK"))
