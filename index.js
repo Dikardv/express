@@ -8,7 +8,7 @@ const CORS = {
   "Access-Control-Allow-Headers": "Content-Type",
 };
 app
-  .get("/", (r) => r.res.send("ALL OK"))
+  .get("/", (r) => r.res.send("ALL OK 1.1"))
   .get("/f", (r) =>
     r.res.format({
       "text/html": () => r.res.send("<h2>Res 52</h2>"),
