@@ -15,5 +15,6 @@ app
       "application/json": () => r.res.json({ "result:": 42 }),
     })
   )
+  .post("/post", (r) => r.res.send("OKKKKK"))
   //.listen(4321, "::1");
   .listen(process.env.PORT || PORT, () => log(process.pid));
