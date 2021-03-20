@@ -1,5 +1,7 @@
 const x = require("express");
 const app = x();
+const { log } = console;
+const PORT = 4321;
 const CORS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,DELETE",
@@ -14,4 +16,4 @@ app
     })
   )
   //.listen(4321, "::1");
-  .listen();
+  .listen(process.env.PORT || PORT, () => log(process.pid));
