@@ -2,14 +2,13 @@
   "name": "express",
   "version": "1.0.0",
   "main": "index.js",
+  "repository": "https://github.com/Dikardv/express.git",
+  "author": "Dikardv <b3rt@ya.ru>",
   "license": "MIT",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "engines": {
-    "node": "v14.13.1"
-  },
+  "type": "module",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "nodemon": "^2.0.7"
   }
