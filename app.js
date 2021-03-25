@@ -35,8 +35,18 @@ export default function appSrc(
     .get("/req/", (req, res) => {
       res.set(CORS);
       let { addr } = req.query;
-      res.send(addr);
+      let rawData = "";
+      http.get(addr, (resp) => {
+        resp.setEncoding("utf8");
+        resp.on("data", (chunk) => {
+          rawData += chunk;
+        });
+        resp.on("end", () => {
+          res.send(rawData);
+        });
+      });
     })
+
     // curl 'https://demoapp.kodaktor.ru/req/?addr=http://node-server.online/r/assets/week.txt'
     // 5
 
