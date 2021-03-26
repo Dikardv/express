@@ -47,11 +47,25 @@ export default function appSrc(
       });
     })
 
-    // curl 'https://demoapp.kodaktor.ru/req/?addr=http://node-server.online/r/assets/week.txt'
-    // 5
+    .post("/req/", (req, res) => {
+      res.set(CORS);
+      let { addr } = req.body;
+      let rD = "";
+      http.get(addr, (resp) => {
+        resp.setEncoding("utf8");
+        resp.on("data", (chunk) => {
+          rD += chunk;
+        });
+        resp.on("end", () => {
+          res.send(rD);
+        });
+      });
+    })
 
-    // curl 'https://demoapp.kodaktor.ru/req/' -d 'addr=http://node-server.online/r/assets/week.txt'
-    // 5
-    //.listen(process.env.PORT);
-    .listen(PORT);
+    .all("*", (r) => {
+      r.res.set(CORS);
+      r.res.send("xid1337");
+    })
+
+    .listen(process.env.PORT);
 }
