@@ -63,8 +63,5 @@ export default function appSrc(
     .all("*", (r) => {
       r.res.set(CORS);
       r.res.send("xid1337");
-    })
-
-    // .listen(process.env.PORT);
-    .listen(4321);
+    });
 }
