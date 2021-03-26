@@ -5,11 +5,9 @@ export default function appSrc(
   crypto,
   http
 ) {
-  const PORT = 4321;
   const CORS = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,OPTIONS,DELETE",
-    "Access-Control-Allow-Headers": "Content-Type",
   };
   const s = express();
   s.use(bodyParser.urlencoded({ extended: true }))
@@ -67,5 +65,6 @@ export default function appSrc(
       r.res.send("xid1337");
     })
 
-    .listen(process.env.PORT);
+    // .listen(process.env.PORT);
+    .listen(4321);
 }
