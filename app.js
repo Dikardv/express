@@ -3,15 +3,19 @@ export default function appSrc(
   bodyParser,
   createReadStream,
   crypto,
-  http
+  http,
+  m,
+  User
 ) {
   const CORS = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,OPTIONS,DELETE",
   };
-  const s = express();
-  s.use(bodyParser.urlencoded({ extended: true }))
+
+  return express()
+    .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json())
+
     .get("/login/", (req, res) => {
       res.set(CORS);
       res.send("xid1337");
@@ -58,6 +62,25 @@ export default function appSrc(
           res.send(rD);
         });
       });
+    })
+
+    .post("/insert/", async (req, res) => {
+      res.set(CORS);
+      console.log(req.body);
+      let addre = req.body.URL;
+      let login = req.body.login;
+      let password = req.body.password;
+      try {
+        await m.connect(addre, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+        });
+        let pers = new User({ login: `${login}`, password: `${password}` });
+        await pers.save();
+        res.send("ok");
+      } catch (e) {
+        console.log(e);
+      }
     })
 
     .all("*", (r) => {
